@@ -13,22 +13,22 @@ function pow(x, y)
 
 function add(x, y)
 {
-    return x + y;
+    return (x + y);
 }
 
 function sub(x, y)
 {
-    return x - y;
+    return (x - y);
 }
 
 function mul(x, y)
 {
-    return x * y;
+    return (x * y);
 }
 
 function divide(x, y)
 {
-    return y != 0 ? x / y : "nope";
+    return y != 0 ? (x / y) : "nope";
 }
 
 function operate(x, op, y)
@@ -51,7 +51,7 @@ function operate(x, op, y)
 
 function popDisplay()
 {
-    if(display.textContent === '0')
+    if(display.textContent === '0' || display.textContent === "Infinity" || display.textContent === 'nope')
         display.textContent = this.textContent;
     else if(display.textContent.length < 9)
         display.textContent += this.textContent;
@@ -87,7 +87,10 @@ function operations()
             }
             else
             {
-                display.textContent = operate(Number(displayValue), operator, Number(display.textContent));
+                displayValue = operate(Number(displayValue), operator, Number(display.textContent));
+                if(displayValue >= 1e+9)
+                    displayValue = Number(displayValue).toExponential(1);
+                display.textContent = displayValue;
                 displayValue = 0;
                 operator = '';
             }    
