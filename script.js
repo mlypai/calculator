@@ -91,7 +91,7 @@ function operations()
                 displayValue = operate(Number(displayValue), operator, Number(display.textContent));
                 if(displayValue >= 1e+9)
                     displayValue = displayValue.toExponential(1);
-                display.textContent = displayValue;
+                display.textContent = displayValue.toFixed(2);
                 if(this.textContent != '=')
                     operator = this.textContent;
                 else
