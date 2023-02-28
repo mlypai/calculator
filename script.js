@@ -51,7 +51,7 @@ function operate(x, op, y)
 
 function popDisplay()
 {
-    if(display.textContent === '0' || display.textContent === "Infinity" || display.textContent === 'nope')
+    if(display.textContent === '0' || !isFinite(display.textContent) || (operator && Number(display.textContent) === displayValue))
         display.textContent = this.textContent;
     else if(display.textContent.length < 9)
         display.textContent += this.textContent;
@@ -79,20 +79,23 @@ function operations()
                 display.textContent += '.';
             break;
         default:
-            if(!operator)
+            if(!operator && this.textContent != '=' && isFinite(display.textContent))
             {
                 displayValue = display.textContent;
                 operator = this.textContent;
-                display.textContent = "";
+                
+                display.textContent = '';
             }
-            else
+            else if(operator)
             {
                 displayValue = operate(Number(displayValue), operator, Number(display.textContent));
                 if(displayValue >= 1e+9)
-                    displayValue = Number(displayValue).toExponential(1);
+                    displayValue = displayValue.toExponential(1);
                 display.textContent = displayValue;
-                displayValue = 0;
-                operator = '';
+                if(this.textContent != '=')
+                    operator = this.textContent;
+                else
+                    operator = '';
             }    
             break;
     }
