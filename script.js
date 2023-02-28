@@ -25,7 +25,7 @@ function operate(x, op, y)
             return add(x, y);
         case '-':
             return sub(x, y);
-        case 'x':
+        case '*':
             return mul(x, y);
         case '/':
             return divide(x, y);
