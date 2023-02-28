@@ -1,3 +1,10 @@
+const numbers = document.querySelectorAll(".number");
+
+let display = document.getElementById('display');
+let displayValue;
+
+
+
 function add(x, y)
 {
     return x + y;
@@ -15,7 +22,7 @@ function mul(x, y)
 
 function divide(x, y)
 {
-    return x / y;
+    return y != 0 ? x / y : "nope";
 }
 
 function operate(x, op, y)
@@ -33,3 +40,11 @@ function operate(x, op, y)
             return;
     }
 }
+
+function popDisplay()
+{
+    if(display.textContent.length < 9)
+        display.textContent += this.textContent;
+}
+
+numbers.forEach(a => a.addEventListener('click', popDisplay));

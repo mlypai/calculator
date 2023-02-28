@@ -11,7 +11,7 @@ body{
 #calc {
     
     height: 600px;
-    width: 350px;
+    width: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -21,7 +21,7 @@ body{
 
 #display {
     flex: 1;
-    width: 340px;
+    width: 390px;
     border: 1px;
     border: solid;
     font-size: 80px;
@@ -38,12 +38,12 @@ body{
 
 .row{
     height: 100px;
-    width: 350px;
+    width: 400px;
     display: flex;
 }
 
 button {
-    width: 90px;
+    width: 100px;
     height: auto;
     
     border: 0;
